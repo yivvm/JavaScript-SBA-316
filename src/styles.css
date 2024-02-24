@@ -10,7 +10,7 @@
   }
   
   body {
-    font-family: sans-serif, Arial, Helvetica, Geneva;
+    font-family: Geneva, sans-serif, Arial, Helvetica ;
     height: 100vh;
     margin: 0;
     display: grid;
