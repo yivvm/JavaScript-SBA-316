@@ -23,25 +23,30 @@
             <img src="src/location.png" alt="the map of National Urgent Care Dry Tortugas">
 
             <h3>Schedule an appointment: </h3>
-            <p id="open">Hours of operation</p>
 
             <div>
                 <label for="date">Schedule On </label>
             <input type="date" id="date" name="date" required min="new Date()">
             </div>
-            
 
-            <input type="time">
+            <p id="open">Hours of operation</p>
+            
+            <div>
+                <input type="time">
+            </div>
+
+            <div id="time-slots"></div>
+            
         </div>
 
-        <div class="right">
+        <div class="right" style="padding: 90px">
             <p>Please provide your information below.</p>
 
             <!-- Information Form -->
             <form id="info"></form>
 
-            <button class="button">Submit</button>
-            <button class="button">Back</button>
+            <button class="button" id="submit">Submit</button>
+            <button class="button" id="back">Back</button>
 
         </div>
     </div>

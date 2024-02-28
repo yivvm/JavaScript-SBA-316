@@ -97,14 +97,7 @@ field.min = new Date().toISOString().split('T')[0];
 
 date.addEventListener('input', function () {
     let date = new Date(`${field.value}T00:00`);
-    console.log(date.getDay());
-
-    // update the operation hours on that day
-    if (date.getDay() === 0 || date.getDay() === 6) {
-        openHours.innerHTML = 'Hours of operation: 9AM - 6PM EST'
-    } else {
-        openHours.innerHTML = 'Hours of operation: 8AM - 8PM EST' 
-    }
+    // console.log(date.getDay());
 
     // clear previous dateDemo if there is a next sibling
     if (field.nextSibling) {
@@ -121,6 +114,22 @@ date.addEventListener('input', function () {
     dateDemo.textContent = `${date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}`;
     field.parentNode.insertBefore(dateDemo, field.nextSibling);
 
+    // update the operation hours on that day
+    if (date.getDay() === 0 || date.getDay() === 6) {
+        openHours.innerHTML = 'Select a Time between 9AM and 6PM EST'
+    } else {
+        openHours.innerHTML = 'Select a Time between 8AM and 8PM EST' 
+    }
 
     // update available time
+    // Call the function to generate time slots
+    generateTimeSlots();
 })
+
+// Function to generate time slots
+function generateTimeSlots() {
+    
+}
+
+
+

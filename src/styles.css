@@ -73,7 +73,11 @@ nav a.active {
   height: auto;
   min-width: auto;
   text-align: center;
-  border: black;
+  /* border: black; */
+}
+
+div {
+  padding: 10px;
 }
 
   /* === left =================== */
