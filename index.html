@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schedule Page</title>
     <link rel="stylesheet" href="src/styles.css">
+    <script
+      src="https://kit.fontawesome.com/d8f052c6cf.js"
+      crossorigin="anonymous"
+    ></script>
 </head>
 
 <body>
@@ -41,13 +45,61 @@
         </div>
 
         <div class="right" style="padding: 90px">
-            <p>Please provide your information below.</p>
+            <p>Please provide some information about the patient.</p>
 
             <!-- Information Form -->
-            <form id="info"></form>
+            <form id="info">
+                <div class="form">
+                    <label for="firstname">Legal First Name</label>
+                    <input name="firstname" type="text" placeholder="Legal First Name" />
 
-            <button class="button" id="submit">Submit</button>
-            <button class="button" id="back">Back</button>
+                    <label for="lastname">Legal Last Name</label>
+                    <input name="lastname" type="text" placeholder="Legal Last Name" />
+
+                    <label for="date of birth">Date of Birth</label>
+                    <input name="dateofbirth" type="date" placeholder="MM/DD/YYYY" />
+        
+                    <label for="legalsex">Legal Sex</label>
+                    <span style="font-size: 10px; color:grey">(Your legal sex is what is listed on your ID.)</span>
+                    <div id="gender-radio">
+                        <input type="radio" id="female" name="gender" value="female" checked="unchecked"> Female
+                        <input type="radio" id="male" name="gender" value="male">Male
+                    </div>
+
+                    <label for="contact">How can we contact you for your visit?</label>
+                    <input name="phone" type="tel" placeholder="Mobile Phone Number">
+
+                    <input name="email" type="text" placeholder="Email" />
+        
+                    <label for="reason">Help us prepare for your arrival</label> 
+                    <select name="reason" id="reason">
+                        <option value="">Reason for visit</option>
+                        <option value="illness">Illness</option>
+                        <option value="injury">Injury</option>
+                        <option value="wound">Wound/Laceration</option>
+                        <option value="testing">Testing onsite</option>
+                        <option value="DOT physicals">DOT physicals</option>
+                        <option value="others">Others</option>
+                    </select>
+
+                    <label for="other">Other Reasons</label>
+                    <input type="text" placeholder="Please let us know ...">
+
+                    <div class="flex-row">
+                    <input name="terms" type="checkbox" />
+                    <label for="terms"
+                        >I agree to the&nbsp;<a href="#">Terms of Use</a>.</label
+                    >
+
+                    <button class="button" id="submit">Submit</button>
+                    <button class="button" id="back">Back</button>
+                
+                    </div>
+                </div>
+                
+              </form>
+
+            
 
         </div>
     </div>
