@@ -111,24 +111,55 @@ date.addEventListener('input', function () {
     const dateDemo = document.createElement('div');
     dateDemo.id = 'dateDemo';
     dateDemo.style.padding = '10px 0';
-    dateDemo.textContent = `${date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}`;
+    dateDemo.textContent = `${date.toLocaleDateString('en-US', {weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'})}`;
     field.parentNode.insertBefore(dateDemo, field.nextSibling);
 
     // update the operation hours on that day
+    // setup startTime and endTime for time slots
+    const startTime = new Date();
+    startTime.setHours(8, 0, 0, 0);
+    // console.log(startTime);
+    const endTime = new Date();
+    endTime.setHours(20, 0, 0, 0);
+    const interval = 20;
     if (date.getDay() === 0 || date.getDay() === 6) {
         openHours.innerHTML = 'Select a Time between 9AM and 6PM EST'
+        startTime.setHours(9, 0, 0, 0);
+        endTime.setHours(18, 0, 0, 0);
     } else {
         openHours.innerHTML = 'Select a Time between 8AM and 8PM EST' 
     }
 
     // update available time
     // Call the function to generate time slots
-    generateTimeSlots();
+    generateTimeSlots(startTime, endTime, interval);
+
+    // TODO: try to use cloneNode and template, not working, will figure out later
+    // var timeSlotsContainer = document.getElementById('time-slots');
+    // timeSlotsContainer.appendChild(timeSlots.cloneNode(true));
+
+    // TODO: once the available time is full, remove that time slot
 })
 
 // Function to generate time slots
-function generateTimeSlots() {
-    
+function generateTimeSlots(startTime, endTime, interval) {
+    const timeSlotsContainers = document.querySelectorAll('.time-slots');
+
+    // clear previous content
+    timeSlotsContainers.forEach(container => container.innerHTML = '');
+
+    // loop through time slots
+    while (startTime < endTime) {
+        timeSlotsContainers.forEach(container => {
+            const timeSlot = document.createElement('div');
+            timeSlot.classList.add('time-slot');
+            timeSlot.textContent = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            container.appendChild(timeSlot);
+        });
+
+        // move to the next time slot
+        startTime.setMinutes(startTime.getMinutes() + interval);
+    }
 }
 
 
