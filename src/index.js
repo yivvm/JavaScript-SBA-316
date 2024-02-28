@@ -203,3 +203,20 @@ document.querySelectorAll('input[type="radio"][name="gender"]').forEach(radio =>
 });
 
 
+// window.prompt or alert when clicks submit button
+document.getElementById('submit').addEventListener('click', function() {
+    const form = document.querySelector('form');
+    if (form.checkValidity()) {
+        window.prompt('You have successfully scheduled your visit!');
+    } else {
+        alert('Please fill in all required fields and agree to the Terms of Use.');
+    }
+})
+
+// window.confirm when clicks back button
+document.getElementById('back').addEventListener('click', function () {
+    const confirmBack = window.confirm('Your information is not saved. The appointment is not saved. Are you sure you want to go back?');
+    if (confirmBack) {
+        window.history.back();
+    }
+});
