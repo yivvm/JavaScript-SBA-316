@@ -173,5 +173,10 @@ function generateTimeSlots(date) {
     });
 }
 
-
+// current local time
+setInterval(myTimer, 1000);
+function myTimer () {
+    const d = new Date();
+    document.getElementById('current-time').innerHTML = `Current Local Time: ${d.toLocaleTimeString()}`;
+}
 
