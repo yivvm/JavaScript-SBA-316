@@ -88,4 +88,39 @@ addGlobalEventListener(subMenuEl, 'click', 'a', e => {
 })
 
 
-// === ===============================
+// ===  ===============================
+let openHours = document.getElementById('open');
+
+// handle date change
+let field = document.querySelector('#date')
+field.min = new Date().toISOString().split('T')[0];
+
+date.addEventListener('input', function () {
+    let date = new Date(`${field.value}T00:00`);
+    console.log(date.getDay());
+
+    // update the operation hours on that day
+    if (date.getDay() === 0 || date.getDay() === 6) {
+        openHours.innerHTML = 'Hours of operation: 9AM - 6PM EST'
+    } else {
+        openHours.innerHTML = 'Hours of operation: 8AM - 8PM EST' 
+    }
+
+    // clear previous dateDemo if there is a next sibling
+    if (field.nextSibling) {
+        let previousDateDemo = document.querySelector('#dateDemo');
+        if (previousDateDemo) {
+            previousDateDemo.remove();
+        }
+    }
+
+    // create and append new dateDemo
+    const dateDemo = document.createElement('div');
+    dateDemo.id = 'dateDemo';
+    dateDemo.style.padding = '10px 0';
+    dateDemo.textContent = `${date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}`;
+    field.parentNode.insertBefore(dateDemo, field.nextSibling);
+
+
+    // update available time
+})
