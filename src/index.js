@@ -90,6 +90,10 @@ addGlobalEventListener(subMenuEl, 'click', 'a', e => {
 
 // ===  ===============================
 let openHours = document.getElementById('open');
+const timeSlotsContainers = document.querySelectorAll('.time-slots');
+
+// hide time slots initially
+timeSlotsContainers.forEach(container => container.style.display = 'none');
 
 // handle date change
 let field = document.querySelector('#date')
@@ -115,24 +119,18 @@ date.addEventListener('input', function () {
     field.parentNode.insertBefore(dateDemo, field.nextSibling);
 
     // update the operation hours on that day
-    // setup startTime and endTime for time slots
-    const startTime = new Date();
-    startTime.setHours(8, 0, 0, 0);
-    // console.log(startTime);
-    const endTime = new Date();
-    endTime.setHours(20, 0, 0, 0);
-    const interval = 20;
     if (date.getDay() === 0 || date.getDay() === 6) {
-        openHours.innerHTML = 'Select a Time between 9AM and 6PM EST'
-        startTime.setHours(9, 0, 0, 0);
-        endTime.setHours(18, 0, 0, 0);
+        openHours.innerHTML = 'Select a Time between 9AM and 6PM EST';
     } else {
-        openHours.innerHTML = 'Select a Time between 8AM and 8PM EST' 
+        openHours.innerHTML = 'Select a Time between 8AM and 8PM EST';
     }
 
     // update available time
     // Call the function to generate time slots
-    generateTimeSlots(startTime, endTime, interval);
+    generateTimeSlots(date);
+    // show time slots
+    timeSlotsContainers.forEach(container => container.style.display = 'block');
+
 
     // TODO: try to use cloneNode and template, not working, will figure out later
     // var timeSlotsContainer = document.getElementById('time-slots');
@@ -142,24 +140,37 @@ date.addEventListener('input', function () {
 })
 
 // Function to generate time slots
-function generateTimeSlots(startTime, endTime, interval) {
-    const timeSlotsContainers = document.querySelectorAll('.time-slots');
+function generateTimeSlots(date) {
+    timeSlotsContainers.forEach(container => {
+        // clear previous content
+        container.innerHTML = '';
 
-    // clear previous content
-    timeSlotsContainers.forEach(container => container.innerHTML = '');
+        // setup startTime and endTime for time slots
+        const startTime = new Date(date);
+        startTime.setHours(8, 0, 0, 0);
+        // console.log(startTime);
+        const endTime = new Date(date);
+        endTime.setHours(20, 0, 0, 0);
+        const interval = 20;
 
-    // loop through time slots
-    while (startTime < endTime) {
-        timeSlotsContainers.forEach(container => {
+        // check if it's a weekend, adjust working hours accordingly
+        if (date.getDay() === 0 || date.getDay() === 6) {
+            startTime.setHours(9, 0, 0, 0);
+            endTime.setHours(18, 0, 0, 0);
+        } 
+
+        // loop through time slots
+        while (startTime < endTime) {
+            // create a box for each time slot
             const timeSlot = document.createElement('div');
             timeSlot.classList.add('time-slot');
             timeSlot.textContent = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             container.appendChild(timeSlot);
-        });
 
-        // move to the next time slot
-        startTime.setMinutes(startTime.getMinutes() + interval);
-    }
+            // move to the next time slot
+            startTime.setMinutes(startTime.getMinutes() + interval);
+        }
+    });
 }
 
 

@@ -85,6 +85,19 @@ div {
   width: 50%;
 }
 
+.time-slots {
+  display: none;
+}
+
+.time-slot {
+  margin-bottom: 5px;
+  vertical-align: top;
+  border: 1px solid #03045E;
+  /* margin: 5px; */
+  /* padding: 5px; */
+  width: calc(20% - 12.5px);
+  box-sizing: border-box;
+}
 
   /* === right======================= */
 .right {
