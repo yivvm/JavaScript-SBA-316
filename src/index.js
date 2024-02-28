@@ -159,6 +159,13 @@ function generateTimeSlots(date) {
             endTime.setHours(18, 0, 0, 0);
         } 
 
+        // check if it is today, reset the start time after current local time
+        if (date.toDateString() === new Date().toDateString()) {
+            const currentTime = new Date().getHours() * 60 + new Date().getMinutes();
+            const nextSlotTime = Math.ceil(currentTime / 20) * 20;
+            startTime.setHours(Math.floor(nextSlotTime / 60), nextSlotTime % 60, 0, 0);
+        }
+
         // loop through time slots
         while (startTime < endTime) {
             // create a box for each time slot
