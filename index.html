@@ -51,13 +51,13 @@
             <form id="info">
                 <div class="form">
                     <label for="firstname">Legal First Name</label>
-                    <input name="firstname" type="text" placeholder="Legal First Name" />
+                    <input name="firstname" type="text" placeholder="Legal First Name" required/>
 
                     <label for="lastname">Legal Last Name</label>
-                    <input name="lastname" type="text" placeholder="Legal Last Name" />
+                    <input name="lastname" type="text" placeholder="Legal Last Name" required/>
 
                     <label for="date of birth">Date of Birth</label>
-                    <input name="dateofbirth" type="date" placeholder="MM/DD/YYYY" />
+                    <input name="dateofbirth" type="date" placeholder="MM/DD/YYYY" required/>
         
                     <label for="legalsex">Legal Sex</label>
                     <span style="font-size: 10px; color:grey">(Your legal sex is what is listed on your ID.)</span>
@@ -67,12 +67,12 @@
                     </div>
 
                     <label for="contact">How can we contact you for your visit?</label>
-                    <input name="phone" type="tel" placeholder="Mobile Phone Number">
+                    <input name="phone" type="tel" placeholder="Mobile Phone Number (XXX) XXX-XXX or XXX-XXX-XXXX" required pattern="^\(\d{3}\)\s\d{3}-\d{4}$|^\d{3}-\d{3}-\d{4}$">
 
-                    <input name="email" type="text" placeholder="Email" />
+                    <input name="email" type="text" placeholder="Email" required/>
         
                     <label for="reason">Help us prepare for your arrival</label> 
-                    <select name="reason" id="reason">
+                    <select name="reason" id="reason" required>
                         <option value="">Reason for visit</option>
                         <option value="illness">Illness</option>
                         <option value="injury">Injury</option>
@@ -86,8 +86,8 @@
                     <input type="text" placeholder="Please let us know ...">
 
                     <div class="flex-row">
-                    <input name="terms" type="checkbox" />
-                    <label for="terms"
+                    <input name="terms" type="checkbox" required/>
+                    <label for="terms" style="font-size: 15px;"
                         >I agree to the&nbsp;<a href="#">Terms of Use</a>.</label
                     >
 

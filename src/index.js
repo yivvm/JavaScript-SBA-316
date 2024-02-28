@@ -187,3 +187,19 @@ function myTimer () {
     document.getElementById('current-time').innerHTML = `Current Local Time: ${d.toLocaleTimeString()}`;
 }
 
+
+// form validation
+// radio button validation: only one radio buton is checked
+document.querySelectorAll('input[type="radio"][name="gender"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        if (this.checked) {
+            document.querySelectorAll('input[type="radio"][name="gender"]').forEach(otherRadio => {
+                if (otherRadio !== this) {
+                    otherRadio.checked = false;
+                }
+            });
+        }
+    });
+});
+
+
