@@ -176,6 +176,19 @@ function generateTimeSlots(date) {
             timeSlot.classList.add('time-slot');
             timeSlot.textContent = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+            // add event listener to change attribute on click
+            timeSlot.addEventListener('click', function() {
+                // deselect all time slots
+                document.querySelectorAll('.time-slot').forEach(slot => {
+                    slot.removeAttribute('data-selected');
+                    slot.style.backgroundColor = '';
+                });
+
+                // select the clicked time slot
+                timeSlot.setAttribute('data-selected', 'true');
+                timeSlot.style.backgroundColor = '#5aa9e6';
+            });
+
             // append the time slot to the fragment
             fragment.appendChild(timeSlot);
             // container.appendChild(timeSlot);
@@ -211,12 +224,11 @@ document.querySelectorAll('input[type="radio"][name="gender"]').forEach(radio =>
     });
 });
 
-
-// window.prompt or alert when clicks submit button
+// alert when clicks submit button
 document.getElementById('submit').addEventListener('click', function() {
     const form = document.querySelector('form');
     if (form.checkValidity()) {
-        window.prompt('You have successfully scheduled your visit!');
+        alert('You have successfully scheduled your visit!');
     } else {
         alert('Please fill in all required fields and agree to the Terms of Use.');
     }
