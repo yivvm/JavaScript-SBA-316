@@ -1,6 +1,7 @@
 # Appointment Scheduler Web Application
 
 This is a web application for scheduling appointments. Users can select a date and time for their appointment, view available time slots, and submit their appointment details. The application also includes a navigation bar for easy access to different sections.
+![Scheduler](./src/image/Scheduler.png)
 
 ## Features
 - <strong>Date Selection</strong>: Users can select a date for their appointment using a date picker. 
@@ -34,5 +35,3 @@ To run the application locally, follow these steps:
 - HTML5
 - CSS3
 - JavaScript
-
-![Scheduler](./src/image/Scheduler.png)
