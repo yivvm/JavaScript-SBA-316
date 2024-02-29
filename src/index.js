@@ -88,7 +88,7 @@ addGlobalEventListener(subMenuEl, 'click', 'a', e => {
 })
 
 
-// ===  ===============================
+// === left: select date, time slots, local time ===============================
 let openHours = document.getElementById('open');
 const timeSlotsContainers = document.querySelectorAll('.time-slots');
 
@@ -130,11 +130,6 @@ date.addEventListener('input', function () {
     generateTimeSlots(date);
     // show time slots
     timeSlotsContainers.forEach(container => container.style.display = 'block');
-
-
-    // TODO: try to use cloneNode and template, not working, will figure out later
-    // var timeSlotsContainer = document.getElementById('time-slots');
-    // timeSlotsContainer.appendChild(timeSlots.cloneNode(true));
 
     // TODO: once the available time is full, remove that time slot
 })
@@ -210,6 +205,7 @@ function myTimer () {
 }
 
 
+// === right: information form ======================================
 // form validation
 // radio button validation: only one radio buton is checked
 document.querySelectorAll('input[type="radio"][name="gender"]').forEach(radio => {
