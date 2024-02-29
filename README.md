@@ -6,7 +6,7 @@ This is a web application for scheduling appointments. Users can select a date a
 - <strong>Date Selection</strong>: Users can select a date for their appointment using a date picker. 
 ![select-date](./src/image/select-date.png) 
 - <strong>Time Slot Selection</strong>: Time slots are dynamically generated based on the selected date, allowing users to choose their preferred appointment time. 
-    - Before selecting: 
+    - Before selecting: <br>
     ![before](./src/image/before.png)
     - For weekdays: 
     ![weekday](./src/image/weekday.png)
