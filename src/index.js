@@ -166,17 +166,26 @@ function generateTimeSlots(date) {
             startTime.setHours(Math.floor(nextSlotTime / 60), nextSlotTime % 60, 0, 0);
         }
 
+        // create a document fragment to hold the time slots
+        const fragment = document.createDocumentFragment();
+
         // loop through time slots
         while (startTime < endTime) {
             // create a box for each time slot
             const timeSlot = document.createElement('div');
             timeSlot.classList.add('time-slot');
             timeSlot.textContent = startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            container.appendChild(timeSlot);
+
+            // append the time slot to the fragment
+            fragment.appendChild(timeSlot);
+            // container.appendChild(timeSlot);
 
             // move to the next time slot
             startTime.setMinutes(startTime.getMinutes() + interval);
         }
+
+        // append the fragment with all time slots to the container
+        container.appendChild(fragment);
     });
 }
 
@@ -184,7 +193,7 @@ function generateTimeSlots(date) {
 setInterval(myTimer, 1000);
 function myTimer () {
     const d = new Date();
-    document.getElementById('current-time').innerHTML = `Current Local Time: ${d.toLocaleTimeString()}`;
+    document.getElementById('current-time').innerHTML = `Current Local Time: ${new Date().toDateString()} ${d.toLocaleTimeString()}`;
 }
 
 
