@@ -4,23 +4,23 @@ This is a web application for scheduling appointments. Users can select a date a
 
 ## Features
 - <strong>Date Selection</strong>: Users can select a date for their appointment using a date picker. 
-![select-date](./src/images/select-date.png) 
+![select-date](./src/image/select-date.png) 
 - <strong>Time Slot Selection</strong>: Time slots are dynamically generated based on the selected date, allowing users to choose their preferred appointment time. 
     - Before selecting: 
-    ![before](./src/images/before.png)
+    ![before](./src/image/before.png)
     - For weekdays: 
-    ![weekday](./src/images/weekday.png)
+    ![weekday](./src/image/weekday.png)
     - For weekends:
-    ![weekend](./src/images/weekend.png)
+    ![weekend](./src/image/weekend.png)
     - For current day, it will only show the time slots after current local time. 
-    ![after-current-localtime1](./src/images/after-current-localtime1.png) 
-    ![after-current-localtime2](./src/images/after-current-localtime2.png) 
+    ![after-current-localtime1](./src/image/after-current-localtime1.png) 
+    ![after-current-localtime2](./src/image/after-current-localtime2.png) 
 - <strong>Form Validation</strong>: The application validates user input to ensure that all required fields are filled and terms are agreed upon before submission.
 - <strong>Navigation Bar</strong>: A navigation bar provides access to different sections of the application, including information about the clinic, locations, doctors, and patient resources.
     - Main menu: 
-    ![menu](./src/images/menu.png) 
+    ![menu](./src/image/menu.png) 
     - Submenu: 
-    ![submenu](./src/images/submenu.png)
+    ![submenu](./src/image/submenu.png)
 
 ## Getting Started
 To run the application locally, follow these steps:
